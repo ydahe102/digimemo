@@ -1,0 +1,134 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #0F2E2A;
+}
+
+.dm {
+  --field1: #0F2E2A; --field2: #16413B;
+  --panel: #FBF7EE; --panel2: #F1E9D9; --key: #FFFFFF;
+  --ink: #15241F; --muted: #6E7C73; --edge: rgba(15, 46, 42, .14);
+  --signal: #F4B740; --glow: rgba(244, 183, 64, .55);
+  --good: #2F9E6E; --bad: #E0573D;
+  --display: 'SF Mono', 'JetBrains Mono', 'Fira Code', ui-monospace, Menlo, Consolas, monospace;
+  --sans: Inter, 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--sans);
+  color: var(--ink);
+  background:
+    radial-gradient(60% 50% at 80% 0%, var(--glow), transparent 60%),
+    linear-gradient(150deg, var(--field1), var(--field2));
+}
+
+.dm.theme-dusk {
+  --field1: #241032; --field2: #3A1A4A;
+  --panel: #FBF5F8; --panel2: #EEE0EA; --ink: #231427; --muted: #7B6D80;
+  --edge: rgba(35, 20, 39, .14); --signal: #F08AB0; --glow: rgba(240, 138, 176, .5);
+  --good: #4FA98A; --bad: #D7544F;
+}
+
+.dm.theme-mono {
+  --field1: #000; --field2: #0A0A0A;
+  --panel: #FFFFFF; --panel2: #F1F1F1; --ink: #0A0A0A; --muted: #3C3C3C;
+  --edge: rgba(0, 0, 0, .18); --signal: #1668FF; --glow: rgba(22, 104, 255, .45);
+  --good: #1668FF; --bad: #D81E2C;
+}
+
+.dm * { box-sizing: border-box; margin: 0; padding: 0; }
+.dm button { font: inherit; cursor: pointer; }
+.dm button:focus-visible,
+.dm input:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
+
+.eyebrow { font-size: .72rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.lbl { font-size: .74rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+.dm-head { padding: 18px 0; }
+.dm-head-in {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.dm-head .eyebrow { color: rgba(255, 255, 255, .62); }
+.brand { font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 900; letter-spacing: -.02em; color: #fff; line-height: 1; }
+.best-chip {
+  display: flex; flex-direction: column; align-items: flex-end;
+  background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 12px; padding: .45rem .8rem; color: #fff;
+}
+.best-chip span { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+.best-chip strong { font-family: var(--display); font-size: 1.2rem; }
+
+.dm-main {
+  flex: 1;
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 8px 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  width: 100%;
+  background: var(--panel);
+  border-radius: 22px;
+  padding: clamp(1.4rem, 4vw, 2.6rem);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, .28);
+}
+
+.start {
+  flex: 1;
+  min-width: 180px;
+  min-height: 58px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--signal);
+  color: #1a1a1a;
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: .01em;
+  transition: transform .15s, box-shadow .15s, filter .15s;
+}
+.theme-mono .start { color: #fff; }
+.start:hover { transform: translateY(-2px); box-shadow: 0 16px 30px var(--glow); filter: saturate(1.05); }
+
+.ghost {
+  background: rgba(255, 255, 255, .12);
+  border: 1.5px solid rgba(255, 255, 255, .28);
+  color: #fff;
+  border-radius: 11px;
+  min-height: 42px;
+  padding: 0 .9rem;
+  font-weight: 800;
+}
+.ghost:hover { background: rgba(255, 255, 255, .22); }
+.ghost.wide { width: 100%; }
+
+.secondary-action {
+  width: 100%;
+  min-height: 58px;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ink);
+  font-weight: 900;
+  font-size: 1.05rem;
+  transition: transform .15s, box-shadow .15s, background .15s;
+}
+.secondary-action:hover {
+  background: var(--panel2);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, .12);
+  transform: translateY(-2px);
+}
+
+.dm-foot { text-align: center; color: rgba(255, 255, 255, .7); padding: 14px; font-size: .88rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dm * { transition: none !important; animation: none !important; }
+}
